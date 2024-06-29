@@ -22,7 +22,10 @@ var cleanCmd = &cobra.Command{
 	Can remove clones, mechanical, devices, pinball, systems, preliminary, imperfect and sourcefile from a mame dat file.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if viper.GetString("input") == "" {
-			rootCmd.Help()
+			err := rootCmd.Help()
+			if err != nil {
+				log.Fatal(err)
+			}
 			log.Fatal("Error: input flag is required!")
 		}
 		mame := mamedattools.OpenAndUnmarshal(viper.GetString("input"))
