@@ -1,0 +1,4 @@
+*.dat
+*.exe
+*.yaml
+go-clean-dat
